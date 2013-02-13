@@ -79,15 +79,20 @@ static VALUE rdmtx_decode(VALUE self, VALUE image /* Image from RMagick (Magick:
     return results;
 }
 
-static VALUE rdmtx_encode(VALUE self, VALUE string) {
+static VALUE rdmtx_encode(VALUE self, VALUE string, VALUE margin, VALUE module) {
 
     /* Create and initialize libdmtx structures */
     DmtxEncode * enc = dmtxEncodeCreate();
 
     VALUE safeString = StringValue(string);
+    int safeMargin = NUM2INT(margin);
+    int safeModule = NUM2INT(module);
 
     dmtxEncodeSetProp(enc, DmtxPropPixelPacking, DmtxPack24bppRGB);
     dmtxEncodeSetProp(enc, DmtxPropSizeRequest, DmtxSymbolSquareAuto);
+
+    dmtxEncodeSetProp(enc, DmtxPropMarginSize, safeMargin);
+    dmtxEncodeSetProp(enc, DmtxPropModuleSize, safeModule);
 
     /* Create barcode image */
     if (dmtxEncodeDataMatrix(enc, RSTRING_LEN(safeString),
@@ -124,5 +129,5 @@ void Init_Rdmtx() {
     cRdmtx = rb_define_class("Rdmtx", rb_cObject);
     rb_define_method(cRdmtx, "initialize", rdmtx_init, 0);
     rb_define_method(cRdmtx, "decode", rdmtx_decode, 2);
-    rb_define_method(cRdmtx, "encode", rdmtx_encode, 1);
+    rb_define_method(cRdmtx, "encode", rdmtx_encode, 3);
 }
