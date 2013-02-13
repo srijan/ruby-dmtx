@@ -11,6 +11,7 @@ if ARGV[0]
   puts "The image contains : "
   puts rdmtx.decode(image, 0)
 else
-  rdmtx.encode("Hello you !!").write("output.png")
+  i = rdmtx.encode("Hello you !!", 5, 5)
+  i.write("output.png")
   puts "Written output.png"
 end
