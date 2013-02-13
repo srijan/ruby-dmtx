@@ -1,7 +1,5 @@
 #!/usr/bin/env ruby
-require 'rubygems'
 require 'RMagick'
-
 require 'Rdmtx'
 
 rdmtx = Rdmtx.new
