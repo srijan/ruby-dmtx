@@ -11,6 +11,7 @@ Installation
 Dependencies
 ============
 
+* libdmtx
 * RMagick
 
 Example
