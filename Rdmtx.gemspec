@@ -1,7 +1,7 @@
 Gem::Specification.new do |s|
   s.name        = 'Rdmtx'
-  s.version     = '0.2.2'
-  s.date        = '2013-02-13'
+  s.version     = '0.3.0'
+  s.date        = '2016-11-06'
   s.summary     = "Ruby libdmtx wrapper"
 
   s.description = "This is a ruby wrapper for libdmtx, which is a open source software for reading and writing Data Matrix barcodes."

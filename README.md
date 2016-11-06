@@ -1,5 +1,6 @@
-This is a gem enabled version of the ruby wrapper for libdmtx
-that can be found at: https://github.com/dmtx/dmtx-wrappers
+This is a gem enabled version with some additional features of the ruby
+wrapper for libdmtx that can be found at:
+https://github.com/dmtx/dmtx-wrappers
 
 The original README file is renamed as libdmtx-README.
 
@@ -12,12 +13,12 @@ Dependencies
 ============
 
 * libdmtx
-* RMagick
+* rmagick
 
 Example
 =======
 
-    require 'RMagick'
+    require 'rmagick'
     require 'Rdmtx'
     rdmtx = Rdmtx.new
     i = rdmtx.encode("Hello you !!", 5, 5)
@@ -28,15 +29,27 @@ See test.rb for a decode example.
 API
 ===
 
+### Create new Rdmtx object
+
     rdmtx.new
 
-Create new Rdmtx object
+### Encoding
 
-    rdmtx.encode(String, MarginSize, ModuleSize)
+    rdmtx.encode(String, MarginSize, ModuleSize, SizeRequest)
 
-Create and return an RMagick image object by encoding `String`
-with margin `MarginSize` and module `ModuleSize`.
+Creates and returns an rmagick image object by encoding `String` with
+(optional arguments) margin `MarginSize`, module `ModuleSize`, and
+request a particular size of the output `SizeRequest`.
+
+* `MarginSize` is the margin in number of pixels
+* `ModuleSize` is the size of one module in number of pixels
+* `SizeRequest` has to be one of pre-defined constants like:
+  `DmtxSymbolSquareAuto`, `DmtxSymbol10x10`, etc..
+  See [`ext/rdmtx/Rdmtx.c`](ext/rdmtx/Rdmtx.c) for a full listing of the
+  possible values.
+
+### Decoding
 
     rdmtx.decode(Image, Timeout)
 
-Decode the RMagick image object `Image` within `Timeout`.
+Decodes the rmagick image object `Image` within `Timeout`.
