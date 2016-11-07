@@ -84,32 +84,35 @@ static VALUE rdmtx_encode(int argc, VALUE * argv, VALUE self) {
 
     VALUE string, margin, module, size;
     VALUE safeString;
-    int safeMargin, safeModule, safeSize;
-    DmtxEncode * enc;
-    int width;
-    int height;
     VALUE magickImageClass;
     VALUE outputImage;
+
+    int safeMargin, safeModule, safeSize;
+    int width;
+    int height;
+    DmtxEncode * enc;
 
     rb_scan_args(argc, argv, "13", &string,
                  &margin, &module, &size);
 
     safeString = StringValue(string);
-    if(margin == Qnil) {
+    if(NIL_P(margin)) {
         safeMargin = 5;
     } else {
         safeMargin = NUM2INT(margin);
     }
-    if(module == Qnil) {
+    if(NIL_P(module)) {
         safeModule = 5;
     } else {
-        safeMargin = NUM2INT(module);
+        safeModule = NUM2INT(module);
     }
-    if(size == Qnil) {
+    if(NIL_P(size)) {
         safeSize = DmtxSymbolSquareAuto;
     } else {
         safeSize = NUM2INT(size);
     }
+
+    // printf("Margin = %d, Module = %d, Size = %d\n", safeMargin, safeModule, safeSize);
 
     /* Create and initialize libdmtx structures */
     enc = dmtxEncodeCreate();

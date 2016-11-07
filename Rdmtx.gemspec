@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = 'Rdmtx'
-  s.version     = '0.3.0'
+  s.version     = '0.3.1'
   s.date        = '2016-11-06'
   s.summary     = 'Ruby libdmtx wrapper'
 
