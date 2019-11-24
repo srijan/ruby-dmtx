@@ -13,6 +13,6 @@ Gem::Specification.new do |s|
   s.files       = Dir.glob('ext/**/*.{c,h,rb}')
   s.extensions  = ['ext/rdmtx/extconf.rb']
 
-  s.add_runtime_dependency 'rmagick', '~> 2.16'
+  s.add_runtime_dependency 'rmagick', '~> 4.0.0'
   s.requirements << 'libdmtx'
 end
