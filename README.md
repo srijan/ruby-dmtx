@@ -58,18 +58,31 @@ Decodes the rmagick image object `Image` within `Timeout`.
 Development Environment
 =======================
 
+### Dependencies
+
 ```
 sudo apt install software-properties-common
 sudo apt-add-repository -y ppa:rael-gc/rvm
 sudo apt update
 sudo apt install rvm
-
-rvm install 2.7
-rvm use 2.7@ruby-dmtx
-
 sudo apt install libmagickwand-dev libdmtx-dev
-gem install rmagick
+rvm install 2.7
+```
 
+### Build gem
+```
+rvm use 2.7@ruby-dmtx
 gem build Rdmtx.gemspec
-gem install ./
+```
+
+### Install and test local gem
+```
+gem install ./Rdmtx-0.4.0.gem
+./test.rb
+./test.rb output.png
+```
+
+### Upload to rubygems
+```
+gem push Rdmtx-0.4.0.gem
 ```
