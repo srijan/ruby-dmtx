@@ -22,4 +22,8 @@ jobs:
     - uses: ruby/setup-ruby@v1
       with:
         ruby-version: ${{ matrix.ruby }}
+    - uses: ConorMacBride/install-package@v1
+      with:
+        brew: imagemagick libdmtx
+        apt: libmagickwand-dev libdmtx-dev
     - run: ./run_tests.sh
