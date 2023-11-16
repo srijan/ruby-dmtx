@@ -77,12 +77,12 @@ gem build Rdmtx.gemspec
 
 ### Install and test local gem
 ```
-gem install ./Rdmtx-0.4.0.gem
+gem install ./Rdmtx-0.5.0.gem
 ./test.rb
 ./test.rb output.png
 ```
 
 ### Upload to rubygems
 ```
-gem push Rdmtx-0.4.0.gem
+gem push Rdmtx-0.5.0.gem
 ```
